@@ -1,0 +1,28 @@
+version = '1.0'
+
+apply plugin: 'clojure'
+
+repositories {
+    mavenCentral()
+    clojarsRepo()
+}
+
+clojureRepl {
+    port = "8777"
+}
+
+dependencies {
+    compile 'org.clojure:clojure:1.6.0'
+    compile 'org.clojure:tools.nrepl:0.2.10'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://clojars.org/repo' }
+    }
+    dependencies {
+        classpath 'clojuresque:clojuresque:1.7.0'
+    }
+}
+
