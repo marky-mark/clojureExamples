@@ -14,6 +14,8 @@
          (is (= 4 (+ 2 2)))
          (is (= 7 (+ 3 4))))
 
+(deftest averageTest
+  (is (= 5  (average [5,5]))))
 
 
 

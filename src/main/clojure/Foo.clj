@@ -1,5 +1,4 @@
  (ns Foo)
 
-(defn average
- [numbers]
+(defn average [numbers]
  (/ (apply + numbers) (count numbers)))
