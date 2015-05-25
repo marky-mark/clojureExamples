@@ -1,6 +1,6 @@
-(ns FooTest
+(ns AverageTest
   (:require [clojure.test :refer :all ]
-            [Foo :refer :all ]
+            [Average :refer :all ]
             )
   )
 
@@ -16,6 +16,7 @@
 
 (deftest averageTest
   (is (= 5  (average [5,5]))))
+
 
 
 

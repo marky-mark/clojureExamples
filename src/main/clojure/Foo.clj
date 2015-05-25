@@ -1,4 +1,5 @@
- (ns Foo)
+;namespaces are similar to java packages
+(ns Foo)
 
-(defn average [numbers]
- (/ (apply + numbers) (count numbers)))
+;vars are not variables! Fact
+(def x 1)
