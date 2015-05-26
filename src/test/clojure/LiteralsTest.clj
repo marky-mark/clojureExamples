@@ -27,4 +27,7 @@
   (is (= (re-seq #"(\d+)-(\d+)" "1-3") (["1-3" "1" "3"]))))
 (comment this is a comment)
 
+(deftest sequenceTest
+  (is (identical? "x" "x")))
+
 
