@@ -1,8 +1,9 @@
  (ns SpecialFormTest
    (:require [clojure.test :refer :all]
              [SpecialForm :refer [hypot v foo fooAgain fooMore fooRest retain
-                                  mapDestruct mapFoo, mapFoo2, map2D, mapDestructAgain
-                                  seqMap, resolveBirthday]
+                                  mapDestruct mapFoo mapFoo2 map2D mapDestructAgain
+                                  seqMap resolveBirthday mapRetain mapDefualts
+                                  mapDefaults2 mapDefaults3 chasBinding]
               ]
              )
    )
@@ -71,5 +72,21 @@
 
  (deftest resolveBirthdayTest
    (is (= resolveBirthday "James was born on Tue Feb 06 00:00:00 GMT 1973")))
+
+ ;random. Cannot test
+ #_(deftest mapRetainTest
+   (is (= mapRetain '{:sum 17, :z 3, :y 8, :x 9})))
+
+ (deftest mapDefualtsTest
+   (is (= mapDefualts 55)))
+
+(deftest mapDefualtsTest2
+  (is (= mapDefaults2 55)))
+
+(deftest mapDefualtsTest2
+  (is (= mapDefaults3 {:opt1 true, :opt2 false})))
+
+ (deftest chasBindingTest
+   (is (= chasBinding "Chas is 31 years old and lives in Massachusetts.")))
 
 

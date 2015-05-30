@@ -67,3 +67,48 @@
  (def resolveBirthday
    (let [[name {bd :birthday}] map-in-vector]
      (str name " was born on " bd)))
+
+ (def mapRetain
+   (let [{r1 :x r2 :y :as randoms}
+         (zipmap [:x :y :z] (repeatedly (partial rand-int 10)))]
+     (assoc randoms :sum (+ r1 r2))))
+
+ (def mapDefualts
+   (let [{k :unknown x :a
+          :or {k 50}} m]
+     (+ k x)))
+
+ (def mapDefaults2
+   (let [{k :unknown x :a} m
+         k (or k 50)]
+     (+ k x)))
+
+ (def mapDefaults3
+   (let [{opt1 :option} {:option false}
+         opt1 (or opt1 true)
+         {opt2 :option :or {opt2 true}} {:option false}]
+     {:opt1 opt1 :opt2 opt2}))
+
+(def chas {:name "Chas" :age 31 :location "Massachusetts"})
+
+ (def chasBinding
+   (let [{name :name age :age location :location} chas]
+     (format "%s is %s years old and lives in %s." name age location)))
+
+(def brian {"name" "Brian" "age" 31 "location" "British Columbia"})
+(let [{:strs [name age location]} brian]
+  (format "%s is %s years old and lives in %s." name age location))
+
+(def christophe {'name "Christophe" 'age 33 'location "Rhône-Alpes"})
+(let [{:syms [name age location]} christophe]
+  (format "%s is %s years old and lives in %s." name age location))
+
+(def user-info ["robert8990" 2011 :name "Bob" :city "Boston"])
+(let [[username account-year & extra-info] user-info
+      {:keys [name city]} (apply hash-map extra-info)]
+  (format "%s is in %s" name city))
+;= "Bob is in Boston"
+
+(let [[username account-year & {:keys [name city]}] user-info]
+  (format "%s is in %s" name city))
+;= "Bob is in Boston"
