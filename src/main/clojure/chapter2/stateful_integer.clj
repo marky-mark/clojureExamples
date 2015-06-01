@@ -16,3 +16,9 @@
 ;= nil
 (= five six)
 ;= true
+
+
+(defn print-number
+  [n]
+  (println (.intValue n))
+  (.setInt n 42))

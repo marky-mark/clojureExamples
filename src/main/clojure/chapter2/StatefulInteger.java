@@ -28,9 +28,12 @@ public class StatefulInteger extends Number {
         return 0;
     }
 
+    @Override
     public int hashCode () {
         return state;
     }
+
+    @Override
     public boolean equals (Object obj) {
         return obj instanceof StatefulInteger &&
                 state == ((StatefulInteger)obj).state;
