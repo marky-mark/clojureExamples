@@ -13,3 +13,12 @@
 (deftest lowercase-test
   (is (= (clojure.string/lower-case "Clojure") "clojure")))
 
+(deftest map-test
+  (is (= (map clojure.string/lower-case ["Java" "Imperative" "Weeping"
+                                         "Clojure" "Learning" "Peace"])
+         '("java" "imperative" "weeping" "clojure" "learning" "peace"))))
+
+(deftest map-double-vector-test
+  (is (= (map * [1 2 3 4] [5 6 7 8]) '(5 12 21 32))))
+
+
