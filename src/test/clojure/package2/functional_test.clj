@@ -84,6 +84,20 @@
 (deftest camel->keyword->test->foo->hey
   (is (= (camel->keyword "CamelCase") ':camel-case)))
 
+(deftest adder-test
+  (is (= ((adder 5) 18) 23)))
+
+(deftest doubler-test
+  (is (= (double-+ 1 2 3) 12)))
+
+(deftest logger-test
+  (*out*-logger "hello"))
+
+(deftest retain-logger-test
+  (retained-logger "helloRetained")
+  (retained-logger "+more")
+  (println (str writer)) )
+
 
 
 
