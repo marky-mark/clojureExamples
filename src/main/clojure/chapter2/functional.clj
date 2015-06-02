@@ -67,13 +67,17 @@
        first
        Integer/parseInt))
 
-
+;prime only divisable by 1 or iteslf
 (defn prime?
   [n]
   (cond
     (== 1 n) false
     (== 2 n) true
     (even? n) false
+    ;range [start (3) end (square root of n + 1) step (2)]
     :else (->> (range 3 (inc (Math/sqrt n)) 2)
+               ;remainder of each value in range above is zero then prime
                (filter #(zero? (rem n %)))
-               empty?)))
+               ;empty? therefore only divisible by 1 or iteslf and so prime
+               empty?)
+    ))
