@@ -96,7 +96,16 @@
 (deftest retain-logger-test
   (retained-logger "helloRetained")
   (retained-logger "+more")
-  (println (str writer)) )
+  (println (str string-writer)) )
+
+(deftest file-logger-test
+  (log->file "hello"))
+
+(deftest multi-logger-test
+  (log "hello again"))
+
+(deftest time-stamp-logger-test
+  (log-timestamped "goodbye, now"))
 
 
 
