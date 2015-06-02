@@ -1,5 +1,6 @@
 (ns chapter2.functional
-  (:require [clojure.java.io :refer :all]))
+  (:require [clojure.java.io :refer :all]
+            [clojure.xml :refer :all]))
 
 (defn call-twice [f x]
   (f x)
@@ -53,3 +54,26 @@
                        (multi-logger
                          (print-logger *out*)
                          (file-logger "build/messages.log"))))
+
+(defn twitter-followers
+  [username]
+  ;->> threads the expression. Inserts x as last item in form
+  (->> (str "https://api.twitter.com/1/users/show.xml?screen_name=" username)
+       clojure.xml/parse
+       :content
+       (filter (comp #{:followers_count} :tag))
+       first
+       :content
+       first
+       Integer/parseInt))
+
+
+(defn prime?
+  [n]
+  (cond
+    (== 1 n) false
+    (== 2 n) true
+    (even? n) false
+    :else (->> (range 3 (inc (Math/sqrt n)) 2)
+               (filter #(zero? (rem n %)))
+               empty?)))

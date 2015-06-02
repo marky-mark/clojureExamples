@@ -107,7 +107,19 @@
 (deftest time-stamp-logger-test
   (log-timestamped "goodbye, now"))
 
+;twitter api url no longer works
+#_(deftest twitter-followers-test
+  println (twitter-followers "ClojureBook"))
 
+(deftest prime-test
+  println (time (prime? 1125899906842679)))
+
+;memoize; calling it with a function will return another function that has been memoized:
+; can occur because the function is pure (no side effects) and so can be cached.
+(deftest primte-mem-test
+  (let [m-prime? (memoize prime?)]
+    println (time (m-prime? 1125899906842679))
+    println (time (m-prime? 1125899906842679))))
 
 
 
